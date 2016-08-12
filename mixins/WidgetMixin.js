@@ -4,7 +4,7 @@ var {
 } = require('react-native')
 
 
-var GiftedFormManager = require('../GiftedFormManager');
+var WidgetFormManager = require('../WidgetFormManager');
 
 module.exports = {
 
@@ -55,7 +55,7 @@ module.exports = {
       return;
     }
     // get value from store
-    var formState = GiftedFormManager.stores[this.props.formName];
+    var formState = WidgetFormManager.stores[this.props.formName];
     if (typeof formState !== 'undefined') {
       if (typeof formState.values[this.props.name] !== 'undefined') {
         this.setState({
@@ -118,10 +118,10 @@ module.exports = {
     }
 
     // @todo option for live validation ?
-    var validators = GiftedFormManager.getValidators(this.props.formName, this.props.name);
+    var validators = WidgetFormManager.getValidators(this.props.formName, this.props.name);
     if (Array.isArray(validators.validate)) {
       if (validators.validate.length > 0) {
-        var validation = GiftedFormManager.validateAndParseOne(this.props.name, value, {validate: validators.validate, title: validators.title});
+        var validation = WidgetFormManager.validateAndParseOne(this.props.name, value, {validate: validators.validate, title: validators.title});
         if (validation.isValid === false) {
           this.setState({
             validationErrorMessage: validation.message
@@ -141,7 +141,7 @@ module.exports = {
     this.setState({
       value: value
     });
-    GiftedFormManager.updateValue(this.props.formName, this.props.name, value);
+    WidgetFormManager.updateValue(this.props.formName, this.props.name, value);
   },
 
   _onChange(value, onChangeText = true) {
@@ -188,9 +188,9 @@ module.exports = {
     var validators = null;
     if (this.props.displayValue) {
       // in case of modal widget
-      validators = GiftedFormManager.getValidators(this.props.formName, this.props.displayValue);
+      validators = WidgetFormManager.getValidators(this.props.formName, this.props.displayValue);
     } else {
-      validators = GiftedFormManager.getValidators(this.props.formName, this.props.name);
+      validators = WidgetFormManager.getValidators(this.props.formName, this.props.name);
     }
 
     let toValidate = false;

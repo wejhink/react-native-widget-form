@@ -6,7 +6,7 @@ import {
   Dimensions
 } from 'react-native';
 
-var GiftedFormManager = require('../GiftedFormManager');
+var WidgetFormManager = require('../WidgetFormManager');
 
 module.exports = {
 
@@ -82,13 +82,13 @@ module.exports = {
 
   handleValidation() {
     if (!this.props.onValidation) return;
-    var validation = GiftedFormManager.validate(this.props.formName);
+    var validation = WidgetFormManager.validate(this.props.formName);
     this.props.onValidation(validation);
   },
 
   handleValueChange() {
     if (!this.props.onValueChange) return;
-    var values = GiftedFormManager.getValues(this.props.formName);
+    var values = WidgetFormManager.getValues(this.props.formName);
     this.props.onValueChange(values);
   },
 

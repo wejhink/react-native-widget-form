@@ -7,7 +7,7 @@ var WidgetMixin = require('../mixins/WidgetMixin.js');
 
 import Button from 'apsl-react-native-button';
 
-var GiftedFormManager = require('../GiftedFormManager');
+var WidgetFormManager = require('../WidgetFormManager');
 
 
 // @todo to test with validations
@@ -80,8 +80,8 @@ module.exports = React.createClass({
     this.props.preSubmit();
 
     this.clearValidationErrors()
-    var validationResults = GiftedFormManager.validate(this.props.formName);
-    var values = GiftedFormManager.getValues(this.props.formName);
+    var validationResults = WidgetFormManager.validate(this.props.formName);
+    var values = WidgetFormManager.getValues(this.props.formName);
 
     if (validationResults.isValid === true) {
       this.setState({

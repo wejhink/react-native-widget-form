@@ -1,8 +1,8 @@
-# Gifted Form
+# Widget Form
 Form component for React-Native
 
 
-![](https://raw.githubusercontent.com/FaridSafi/react-native-gifted-form/master/capture/signup.gif)
+![](https://raw.githubusercontent.com/wejhink/react-native-widget-form/master/capture/signup.gif)
 
 ### Changelog
 
@@ -13,13 +13,13 @@ Form component for React-Native
 ### Example
 
 ```js
-var {GiftedForm, GiftedFormManager} = require('react-native-gifted-form');
+var {WidgetForm, WidgetFormManager} = require('react-native-widget-form');
 
 var Component = React.createClass({
   render() {
     return (
-      <GiftedForm
-        formName='signupForm' // GiftedForm instances that use the same name will also share the same states
+      <WidgetForm
+        formName='signupForm' // WidgetForm instances that use the same name will also share the same states
 
         openModal={(route) => {
           navigator.push(route); // The ModalWidget will be opened using this method. Tested with ExNavigator
@@ -29,7 +29,7 @@ var Component = React.createClass({
 
         defaults={{
           /*
-          username: 'Farid',
+          username: 'iraycd',
           'gender{M}': true,
           password: 'abcdefg',
           country: 'FR',
@@ -118,8 +118,8 @@ var Component = React.createClass({
         }}
       >
 
-        <GiftedForm.SeparatorWidget />
-        <GiftedForm.TextInputWidget
+        <WidgetForm.SeparatorWidget />
+        <WidgetForm.TextInputWidget
           name='fullName' // mandatory
           title='Full name'
 
@@ -130,7 +130,7 @@ var Component = React.createClass({
         />
 
 
-        <GiftedForm.TextInputWidget
+        <WidgetForm.TextInputWidget
           name='username'
           title='Username'
           image={require('../../assets/icons/color/contact_card.png')}
@@ -140,7 +140,7 @@ var Component = React.createClass({
 
           onTextInputFocus={(currentText = '') => {
             if (!currentText) {
-              let fullName = GiftedFormManager.getValue('signupForm', 'fullName');
+              let fullName = WidgetFormManager.getValue('signupForm', 'fullName');
               if (fullName) {
                 return fullName.replace(/[^a-zA-Z0-9-_]/g, '');
               }
@@ -149,7 +149,7 @@ var Component = React.createClass({
           }}
         />
 
-        <GiftedForm.TextInputWidget
+        <WidgetForm.TextInputWidget
           name='password' // mandatory
           title='Password'
 
@@ -161,7 +161,7 @@ var Component = React.createClass({
           image={require('../../assets/icons/color/lock.png')}
         />
 
-        <GiftedForm.TextInputWidget
+        <WidgetForm.TextInputWidget
           name='emailAddress' // mandatory
           title='Email address'
           placeholder='example@nomads.ly'
@@ -173,30 +173,30 @@ var Component = React.createClass({
           image={require('../../assets/icons/color/email.png')}
         />
 
-        <GiftedForm.SeparatorWidget />
+        <WidgetForm.SeparatorWidget />
 
-        <GiftedForm.ModalWidget
+        <WidgetForm.ModalWidget
           title='Gender'
           displayValue='gender'
           image={require('../../assets/icons/color/gender.png')}
         >
-          <GiftedForm.SeparatorWidget />
+          <WidgetForm.SeparatorWidget />
 
-          <GiftedForm.SelectWidget name='gender' title='Gender' multiple={false}>
-            <GiftedForm.OptionWidget image={require('../../assets/icons/color/female.png')} title='Female' value='F'/>
-            <GiftedForm.OptionWidget image={require('../../assets/icons/color/male.png')} title='Male' value='M'/>
-          </GiftedForm.SelectWidget>
-        </GiftedForm.ModalWidget>
+          <WidgetForm.SelectWidget name='gender' title='Gender' multiple={false}>
+            <WidgetForm.OptionWidget image={require('../../assets/icons/color/female.png')} title='Female' value='F'/>
+            <WidgetForm.OptionWidget image={require('../../assets/icons/color/male.png')} title='Male' value='M'/>
+          </WidgetForm.SelectWidget>
+        </WidgetForm.ModalWidget>
 
-        <GiftedForm.ModalWidget
+        <WidgetForm.ModalWidget
           title='Birthday'
           displayValue='birthday'
           image={require('../../assets/icons/color/birthday.png')}
 
           scrollEnabled={false}
         >
-          <GiftedForm.SeparatorWidget/>
-          <GiftedForm.DatePickerIOSWidget
+          <WidgetForm.SeparatorWidget/>
+          <WidgetForm.DatePickerIOSWidget
             name='birthday'
             mode='date'
 
@@ -204,24 +204,24 @@ var Component = React.createClass({
               return new Date(((new Date()).getFullYear() - 18)+'');
             }}
           />
-        </GiftedForm.ModalWidget>
-        <GiftedForm.ModalWidget
+        </WidgetForm.ModalWidget>
+        <WidgetForm.ModalWidget
           title='Country'
           displayValue='country'
           image={require('../../assets/icons/color/passport.png')}
           scrollEnabled={false}
 
         >
-          <GiftedForm.SelectCountryWidget
+          <WidgetForm.SelectCountryWidget
             code='alpha2'
             name='country'
             title='Country'
             autoFocus={true}
           />
-        </GiftedForm.ModalWidget>
+        </WidgetForm.ModalWidget>
 
 
-        <GiftedForm.ModalWidget
+        <WidgetForm.ModalWidget
           title='Biography'
           displayValue='bio'
 
@@ -229,19 +229,19 @@ var Component = React.createClass({
 
           scrollEnabled={true} // true by default
         >
-          <GiftedForm.SeparatorWidget/>
-          <GiftedForm.TextAreaWidget
+          <WidgetForm.SeparatorWidget/>
+          <WidgetForm.TextAreaWidget
             name='bio'
 
             autoFocus={true}
 
             placeholder='Something interesting about yourself'
           />
-        </GiftedForm.ModalWidget>
+        </WidgetForm.ModalWidget>
 
 
 
-        <GiftedForm.SubmitWidget
+        <WidgetForm.SubmitWidget
           title='Sign up'
           widgetStyles={{
             submitButton: {
@@ -259,20 +259,20 @@ var Component = React.createClass({
               ** postSubmit(); // disable the loader
               ** postSubmit(['An error occurred, please try again']); // disable the loader and display an error message
               ** postSubmit(['Username already taken', 'Email already taken']); // disable the loader and display an error message
-              ** GiftedFormManager.reset('signupForm'); // clear the states of the form manually. 'signupForm' is the formName used
+              ** WidgetFormManager.reset('signupForm'); // clear the states of the form manually. 'signupForm' is the formName used
               */
             }
           }}
 
         />
 
-        <GiftedForm.NoticeWidget
+        <WidgetForm.NoticeWidget
           title='By signing up, you agree to the Terms of Service and Privacy Policity.'
         />
 
-        <GiftedForm.HiddenWidget name='tos' value={true} />
+        <WidgetForm.HiddenWidget name='tos' value={true} />
 
-      </GiftedForm>
+      </WidgetForm>
     );
   }
 });
@@ -280,13 +280,13 @@ var Component = React.createClass({
 
 ### Storing form's state elsewhere (could be used with Redux) - Beta feature
 
-Pass `value` prop to your widgets and `onValueChange` to your GiftedForm to store your state outside of GiftedFormManager's store.
+Pass `value` prop to your widgets and `onValueChange` to your WidgetForm to store your state outside of WidgetFormManager's store.
 
 IMPORTANT: currently only TextInputWidget and HiddenWidget support this feature. PR's are welcome for the other widgets ;)
 
 ```js
 import React, { AppRegistry, Component } from 'react-native'
-import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form'
+import { WidgetForm, WidgetFormManager } from 'react-native-widget-form'
 
 class Form extends Component {
   constructor(props, context) {
@@ -308,20 +308,20 @@ class Form extends Component {
     const { fullName, tos, gender } = this.state.form
     console.log('render', this.state.form)
     return (
-      <GiftedForm
+      <WidgetForm
         formName='signupForm'
         openModal={(route) => { this.props.navigator.push(route) }}
         onValueChange={this.handleValueChange.bind(this)}
       >
-        <GiftedForm.TextInputWidget
+        <WidgetForm.TextInputWidget
           name='fullName'
           title='Full name'
           placeholder='Marco Polo'
           clearButtonMode='while-editing'
           value={fullName}
         />
-        <GiftedForm.HiddenWidget name='tos' value={tos} />
-      </GiftedForm>
+        <WidgetForm.HiddenWidget name='tos' value={tos} />
+      </WidgetForm>
     )
   }
 }
@@ -331,7 +331,7 @@ AppRegistry.registerComponent('Form', () => Form)
 
 ### Installation
 
-`npm install react-native-gifted-form --save`
+`npm install react-native-widget-form --save`
 
 
 ### Available widgets
@@ -356,7 +356,7 @@ See the sources for props details
 
 
 ### Your own widget
-Widgets must implement the mixin GiftedForm.WidgetMixin - See /widgets/TextAreaWidget.js for example
+Widgets must implement the mixin WidgetForm.WidgetMixin - See /widgets/TextAreaWidget.js for example
 
 
 ### Contributing
@@ -367,4 +367,4 @@ Pull requests are welcome
 
 [MIT](LICENSE)
 
-Feel free to ask me questions on Twitter [@FaridSafi](https://www.twitter.com/FaridSafi) !
+Feel free to ask me questions on Twitter [@wejhink](https://www.twitter.com/wejhink) !

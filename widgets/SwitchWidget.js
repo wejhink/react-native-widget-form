@@ -10,7 +10,7 @@ var {
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
-var GiftedSwitch = React.createClass({
+var WidgetSwitch = React.createClass({
   _getSwitch() {
     if (Platform.OS === 'android') {
       return (
@@ -54,7 +54,7 @@ module.exports = React.createClass({
 
           <Text numberOfLines={1} style={this.getStyle('switchTitle')}>{this.props.title}</Text>
           <View style={this.getStyle('switchAlignRight')}>
-            <GiftedSwitch
+            <WidgetSwitch
               style={this.getStyle('switch')}
               {...this.props}
 

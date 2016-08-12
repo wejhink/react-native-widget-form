@@ -11,7 +11,7 @@ import {
 
 var WidgetMixin = require('../mixins/WidgetMixin');
 
-var GiftedFormManager = require('../GiftedFormManager');
+var WidgetFormManager = require('../WidgetFormManager');
 var TimerMixin = require('react-timer-mixin');
 
 var moment = require('moment');
@@ -65,8 +65,8 @@ module.exports = React.createClass({
     var _self = this;
 
     var {
-      GiftedFormModal
-    } = require('../GiftedForm.js');
+      WidgetFormModal
+    } = require('../WidgetForm.js');
 
 
     var route = {
@@ -76,7 +76,7 @@ module.exports = React.createClass({
         var {onFocus, onBlur, ...others} = _self.props;
 
         return (
-          <GiftedFormModal
+          <WidgetFormModal
             {...others}
 
             navigator={navigator}
@@ -147,7 +147,7 @@ module.exports = React.createClass({
     // console.log(typeof this.props.openModal);
 
     if (this.props.openModal === null) {
-      console.warn('GiftedForm: openModal prop is missing in GiftedForm component');
+      console.warn('WidgetForm: openModal prop is missing in WidgetForm component');
     } else {
       this.props.openModal(route);
     }
@@ -200,13 +200,13 @@ module.exports = React.createClass({
 
   _getDisplayableValue() {
     if (this.props.displayValue !== '') {
-      if (typeof GiftedFormManager.stores[this.props.formName] !== 'undefined') {
-        if (typeof GiftedFormManager.stores[this.props.formName].values !== 'undefined') {
-          if (typeof GiftedFormManager.stores[this.props.formName].values[this.props.displayValue] !== 'undefined') {
+      if (typeof WidgetFormManager.stores[this.props.formName] !== 'undefined') {
+        if (typeof WidgetFormManager.stores[this.props.formName].values !== 'undefined') {
+          if (typeof WidgetFormManager.stores[this.props.formName].values[this.props.displayValue] !== 'undefined') {
             if (typeof this.props.transformValue === 'function') {
-              return this.props.transformValue(GiftedFormManager.stores[this.props.formName].values[this.props.displayValue]);
-            } else if (GiftedFormManager.stores[this.props.formName].values[this.props.displayValue] instanceof Date) {
-              return moment(GiftedFormManager.stores[this.props.formName].values[this.props.displayValue]).calendar(null, {
+              return this.props.transformValue(WidgetFormManager.stores[this.props.formName].values[this.props.displayValue]);
+            } else if (WidgetFormManager.stores[this.props.formName].values[this.props.displayValue] instanceof Date) {
+              return moment(WidgetFormManager.stores[this.props.formName].values[this.props.displayValue]).calendar(null, {
                 sameDay: '[Today]',
                 nextDay: '[Tomorrow]',
                 nextWeek: 'dddd',
@@ -214,8 +214,8 @@ module.exports = React.createClass({
                 lastWeek: '[Last] dddd'
               });
             }
-            if (typeof GiftedFormManager.stores[this.props.formName].values[this.props.displayValue] === 'string') {
-              return GiftedFormManager.stores[this.props.formName].values[this.props.displayValue].trim();
+            if (typeof WidgetFormManager.stores[this.props.formName].values[this.props.displayValue] === 'string') {
+              return WidgetFormManager.stores[this.props.formName].values[this.props.displayValue].trim();
             }
           } else {
             // @todo merge with when not select menu
@@ -223,7 +223,7 @@ module.exports = React.createClass({
             // when values[this.props.displayValue] is not found
             // probably because it's a select menu
             // options of select menus are stored using the syntax name{value}, name{value}
-            var values = GiftedFormManager.getValues(this.props.formName);
+            var values = WidgetFormManager.getValues(this.props.formName);
             if (typeof values === 'object') {
               if (typeof values[this.props.displayValue] !== 'undefined') {
                 if (typeof this.props.transformValue === 'function') {

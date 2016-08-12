@@ -8,7 +8,7 @@ var {
 } = require('react-native')
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
-var GiftedSpinner = require('react-native-gifted-spinner');
+var WidgetSpinner = require('react-native-widget-spinner');
 
 module.exports = React.createClass({
   mixins: [WidgetMixin],
@@ -29,7 +29,7 @@ module.exports = React.createClass({
           {...this.props} // mainly for underlayColor
         >
           <View style={this.getStyle('row')}>
-            <GiftedSpinner />
+            <WidgetSpinner />
           </View>
         </TouchableHighlight>
       </View>

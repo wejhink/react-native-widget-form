@@ -1,35 +1,35 @@
 {
-  "name": "react-native-gifted-form",
-  "version": "0.0.12",
-  "description": "Form component for react-native",
-  "main": "GiftedForm.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FaridSafi/react-native-gifted-form.git"
-  },
-  "keywords": [
-    "form",
-    "react-component",
-    "react-native",
-    "ios",
-    "android"
-  ],
-  "author": "Farid from Safi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FaridSafi/react-native-gifted-form/issues"
-  },
-  "homepage": "https://github.com/FaridSafi/react-native-gifted-form#readme",
-  "dependencies": {
-    "apsl-react-native-button": "^3.0.0",
-    "moment": "^2.14.1",
-    "react-native-button": "^1.6.0",
-    "react-native-gifted-spinner": "^0.0.5",
-    "react-native-google-places-autocomplete": "^1.2.0",
-    "react-timer-mixin": "^0.13.3",
-    "validator": "^5.4.0"
-  }
+	"name": "react-native-widget-form",
+	"version": "0.0.12",
+	"description": "Form component for react-native",
+	"keywords": [
+		"form",
+		"react-component",
+		"react-native",
+		"ios",
+		"android"
+	],
+	"homepage": "https://github.com/wejhink/react-native-widget-form#readme",
+	"bugs": {
+		"url": "https://github.com/wejhink/react-native-widget-form/issues"
+	},
+	"license": "MIT",
+	"author": "Ray Ch",
+	"main": "WidgetForm.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/FaridSafi/react-native-widget-form.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"apsl-react-native-button": "^3.0.0",
+		"moment": "^2.14.1",
+		"react-native-button": "^1.6.0",
+		"react-native-widget-spinner": "^0.0.5",
+		"react-native-google-places-autocomplete": "^1.2.0",
+		"react-timer-mixin": "^0.13.3",
+		"validator": "^5.4.0"
+	}
 }
